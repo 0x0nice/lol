@@ -25,11 +25,15 @@
         }
         textarea {
             width: 100%;
+            box-sizing: border-box;
             padding: 10px;
             margin: 20px 0;
             border: 2px solid #00a0dc;
             border-radius: 5px;
             resize: vertical;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
         button {
             background-color: #00a0dc;
@@ -40,6 +44,9 @@
             cursor: pointer;
             font-size: 16px;
             transition: background-color 0.3s;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
         button:hover {
             background-color: #008abc;
@@ -55,40 +62,8 @@
             display: none;
             margin: 20px 0;
         }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>WFM VTO Decision Maker™</h1>
-        <p>Please describe the current situation at Charles Schwab:</p>
-        <textarea id="situation" rows="4" placeholder="Example: Market is crashing, phones are going crazy, and we're severely understaffed..."></textarea>
-        <br>
-        <button onclick="analyzeVTO()">Should I Drop VTO?</button>
-        <div id="loading">Analyzing situation... 🤔</div>
-        <div id="result"></div>
-    </div>
 
-    <script>
-        function analyzeVTO() {
-            const loading = document.getElementById('loading');
-            const result = document.getElementById('result');
-            
-            // Hide previous result and show loading
-            result.style.display = 'none';
-            loading.style.display = 'block';
-            
-            // Simulate "thinking" with setTimeout
-            setTimeout(() => {
-                loading.style.display = 'none';
-                result.innerHTML = "Now is the perfect time to drop VTO! 🎉";
-                result.style.display = 'block';
-            }, 2000); // 2 second delay
-        }
-    </script>
-</body>
-</html>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
+        /* Mobile responsive styles */
         @media screen and (max-width: 480px) {
             .container {
                 width: 90%;
@@ -102,7 +77,7 @@
             
             textarea {
                 width: 100%;
-                font-size: 16px; /* Prevents iOS zoom on focus */
+                font-size: 16px;
             }
             
             button {
@@ -118,7 +93,28 @@
             }
         }
     </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WFM VTO Decision Maker™</h1>
+        <p>Please describe the current situation at Charles Schwab:</p>
+        <textarea id="situation" rows="4" placeholder="Example: Market is crashing, phones are going crazy, and we're severely understaffed..."></textarea>
+        <br>
+        <button onclick="analyzeVTO()">Should I Drop VTO?</button>
+        <div id="loading">Analyzing situation... 🤔</div>
+        <div id="result"></div>
+    </div>
+
     <script>
+        // Error code generator
+        function generateErrorCode() {
+            const nonsenseWords = ['zoop', 'flibber', 'quax', 'wonk', 'dingle', 'boop', 'zazzle', 'quirk'];
+            const numbers = Math.floor(Math.random() * 9999).toString().padStart(4, '0');
+            const randomWord = nonsenseWords[Math.floor(Math.random() * nonsenseWords.length)];
+            const secondWord = nonsenseWords[Math.floor(Math.random() * nonsenseWords.length)];
+            return `${randomWord}_${numbers}_${secondWord}`;
+        }
+
         function analyzeVTO() {
             const loading = document.getElementById('loading');
             const result = document.getElementById('result');
@@ -147,8 +143,7 @@
                 result.style.display = 'block';
             }, 2000); // 2 second delay
         }
-    </script>
-    <script>
+
         // Add event listener for Enter key
         document.addEventListener('DOMContentLoaded', function() {
             const textarea = document.querySelector('textarea');
@@ -160,53 +155,5 @@
             });
         });
     </script>
-    <style>
-        /* Improve iOS formatting */
-        textarea {
-            box-sizing: border-box; /* Include padding in width calculation */
-            max-width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: vertical; /* Allow vertical resizing only */
-            margin: 10px 0;
-            -webkit-appearance: none; /* Remove iOS default styling */
-            -moz-appearance: none; /* Firefox compatibility */
-            appearance: none; /* Standard property */
-        }
-
-        /* Ensure consistent button appearance on iOS */
-        button {
-            border-radius: 4px;
-            border: none;
-            background-color: #007AFF;
-            color: white;
-            -webkit-appearance: none; /* Remove iOS default styling */
-            -moz-appearance: none; /* Firefox compatibility */
-            appearance: none; /* Standard property */
-        }
-
-        /* Improve container padding for iOS */
-        @media screen and (max-width: 768px) {
-            .container {
-                padding: 15px;
-                max-width: 100%;
-                margin: 0 auto;
-            }
-        }
-    </style>
-    <script>
-        // Error code generator
-        function generateErrorCode() {
-            const nonsenseWords = ['zoop', 'flibber', 'quax', 'wonk', 'dingle', 'boop', 'zazzle', 'quirk'];
-            const numbers = Math.floor(Math.random() * 9999).toString().padStart(4, '0');
-            const randomWord = nonsenseWords[Math.floor(Math.random() * nonsenseWords.length)];
-            const secondWord = nonsenseWords[Math.floor(Math.random() * nonsenseWords.length)];
-            return `${randomWord}_${numbers}_${secondWord}`;
-        }
-
-        // Update error message to include code
-        const responses = responses.map(response => {
-            return response + "\n\nError Code: " + generateErrorCode();
-        });
-    </script>
+</body>
+</html>
