@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WFM VTO Decision Maker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #00a0dc;
+            margin-bottom: 30px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 20px 0;
+            border: 2px solid #00a0dc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+        button {
+            background-color: #00a0dc;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #008abc;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #00a0dc;
+            display: none;
+        }
+        #loading {
+            display: none;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WFM VTO Decision Maker™</h1>
+        <p>Please describe the current situation at Charles Schwab:</p>
+        <textarea id="situation" rows="4" placeholder="Example: Market is crashing, phones are going crazy, and we're severely understaffed..."></textarea>
+        <br>
+        <button onclick="analyzeVTO()">Should I Drop VTO?</button>
+        <div id="loading">Analyzing situation... 🤔</div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function analyzeVTO() {
+            const loading = document.getElementById('loading');
+            const result = document.getElementById('result');
+            
+            // Hide previous result and show loading
+            result.style.display = 'none';
+            loading.style.display = 'block';
+            
+            // Simulate "thinking" with setTimeout
+            setTimeout(() => {
+                loading.style.display = 'none';
+                result.innerHTML = "Now is the perfect time to drop VTO! 🎉";
+                result.style.display = 'block';
+            }, 2000); // 2 second delay
+        }
+    </script>
+</body>
+</html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @media screen and (max-width: 480px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+            
+            textarea {
+                width: 100%;
+                font-size: 16px; /* Prevents iOS zoom on focus */
+            }
+            
+            button {
+                width: 100%;
+                padding: 12px;
+                margin: 15px 0;
+                font-size: 18px;
+            }
+            
+            #result {
+                font-size: 20px;
+                word-wrap: break-word;
+            }
+        }
+    </style>
