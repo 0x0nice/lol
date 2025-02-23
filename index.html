@@ -118,3 +118,95 @@
             }
         }
     </style>
+    <script>
+        function analyzeVTO() {
+            const loading = document.getElementById('loading');
+            const result = document.getElementById('result');
+            
+            // Hide previous result and show loading
+            result.style.display = 'none';
+            loading.style.display = 'block';
+            
+            // Array of possible responses
+            const responses = [
+                "Now is the perfect time to drop VTO! 🎉",
+                "You would think, but not today! 😅",
+                "Try again later! ⏰",
+                "Fuck it, why not? 🤷‍♂️", 
+                "Sorry, can't decide. WFM took VTO! 🏃‍♂️",
+                "Permanent VTO; You are fired! 🔥",
+                `Error: Please contact technical support. Error code: ${generateErrorCode()}`
+            ];
+
+            // Simulate "thinking" with setTimeout
+            setTimeout(() => {
+                loading.style.display = 'none';
+                // Get random response
+                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                result.innerHTML = randomResponse;
+                result.style.display = 'block';
+            }, 2000); // 2 second delay
+        }
+    </script>
+    <script>
+        // Add event listener for Enter key
+        document.addEventListener('DOMContentLoaded', function() {
+            const textarea = document.querySelector('textarea');
+            textarea.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault(); // Prevent default newline
+                    analyzeVTO();
+                }
+            });
+        });
+    </script>
+    <style>
+        /* Improve iOS formatting */
+        textarea {
+            box-sizing: border-box; /* Include padding in width calculation */
+            max-width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical; /* Allow vertical resizing only */
+            margin: 10px 0;
+            -webkit-appearance: none; /* Remove iOS default styling */
+            -moz-appearance: none; /* Firefox compatibility */
+            appearance: none; /* Standard property */
+        }
+
+        /* Ensure consistent button appearance on iOS */
+        button {
+            border-radius: 4px;
+            border: none;
+            background-color: #007AFF;
+            color: white;
+            -webkit-appearance: none; /* Remove iOS default styling */
+            -moz-appearance: none; /* Firefox compatibility */
+            appearance: none; /* Standard property */
+        }
+
+        /* Improve container padding for iOS */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 15px;
+                max-width: 100%;
+                margin: 0 auto;
+            }
+        }
+    </style>
+    <script>
+        // Error code generator
+        function generateErrorCode() {
+            const nonsenseWords = ['zoop', 'flibber', 'quax', 'wonk', 'dingle', 'boop', 'zazzle', 'quirk'];
+            const numbers = Math.floor(Math.random() * 9999).toString().padStart(4, '0');
+            const randomWord = nonsenseWords[Math.floor(Math.random() * nonsenseWords.length)];
+            const secondWord = nonsenseWords[Math.floor(Math.random() * nonsenseWords.length)];
+            return `${randomWord}_${numbers}_${secondWord}`;
+        }
+
+        // Update error message to include code
+        const responses = responses.map(response => {
+            return response + "\n\nError Code: " + generateErrorCode();
+        });
+    </script>
